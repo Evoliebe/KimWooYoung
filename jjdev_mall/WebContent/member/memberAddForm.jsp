@@ -29,6 +29,8 @@
 			}else if($('#m_age').val()==""||isNaN($('#m_age').val())){
 				alert("옳바른 나이를 입력해주세요.");
 				$('#m_age').focus();
+			}else if($('#m_addr').val()==""){
+				alert("주소를 입력해주세요.");
 			}else{
 				$('#addForm').submit();
 			}
@@ -37,7 +39,7 @@
 </script>
 </head>
 <body>
-<form id="addForm" action="./memberAddAction.jsp" method="post">
+<form id="addForm" action="<%=request.getContextPath() %>/member/memberAddAction.jsp" method="post">
 <h1>Member Add</h1>
 <table>	
 	<tr>
@@ -62,6 +64,10 @@
 	<tr>
 		<td>나이 : </td>
 		<td><input type ="text" id="m_age" name="m_age"></td>
+	</tr>
+	<tr>
+		<td>주소 : </td>
+		<td><input type ="text" id="m_addr" name="m_addr"></td>
 	</tr>
 	<tr>
 		<td colspan="2"><input type ="button" id="addBtn" value="memberAdd"></td>
