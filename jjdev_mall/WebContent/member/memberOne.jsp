@@ -4,21 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	table, td {
+		border : 1px solid #000000;
+	}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<% 
+<table>
+<tr>
+	<td>No</td><td>ID</td><td>비밀번호</td><td>이름</td><td>성별</td><td>나이</td>
+</tr>
+<%
 	request.setCharacterEncoding("utf-8");
-	String item_name = request.getParameter("item_name");
-	int item_price = Integer.parseInt(request.getParameter("item_price"));
-	double item_rate = Double.parseDouble(request.getParameter("item_rate"));
 	
-/* 	System.out.println("item_name : " + item_name);
-	System.out.println("item_price : " + item_price);
-	System.out.println("item_rate : " + item_rate); */
+	String sendId = request.getParameter("sendId");
+	//System.out.println("sendId : " + sendId);
 	
-//jdbc
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -28,25 +31,30 @@
  	String dbUser = "root";
  	String dbPw = "java0000";
  	
- 	try{
+ //jdbc
+ 	 	try{
  	 	Class.forName(driver);
  	 //02	
  	 	conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
  	 	conn.setAutoCommit(false);
  	 //03
- 	 	String sql="INSERT INTO item (item_name, item_price, item_rate) VALUES (?, ?, ?)";
- 	 	pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
- 	 	
- 	 	pstmt.setString(1, item_name);
- 	 	pstmt.setInt(2, item_price);
- 	 	pstmt.setDouble(3, item_rate);
- 
+ 	 	String sql="select * from member where member_id=?";
+ 	 	pstmt = conn.prepareStatement(sql);
+ 	 	pstmt.setString(1, sendId);
  	 	//System.out.println(pstmt);
  	 //04 
- 	 	pstmt.executeUpdate();
- 	 	
- 	 	rs = pstmt.getGeneratedKeys();
-
+ 	 	rs = pstmt.executeQuery();
+ 	 
+ 	 	while(rs.next()){%>
+ 	 	 <tr>
+ 	 		<td><%=rs.getInt("member_no")%></td>
+ 	 		<td><%=rs.getString("member_id")%></td>
+ 	 		<td><%=rs.getString("member_pw")%></td>
+ 	 		<td><%=rs.getString("member_name")%></td>
+ 	 		<td><%=rs.getString("member_sex")%></td>
+ 	 		<td><%=rs.getInt("member_age")%></td>
+ 	 	</tr>	 	
+ 	 	<% }
  	 	conn.commit();
  	 }catch(Exception e){
  		 conn.rollback();
@@ -54,8 +62,9 @@
  	 }finally{
  		 conn.close();
  		 pstmt.close();
- 		 rs.close();
+ 		 rs.close();		 
  	 }
 %>
+</table>
 </body>
 </html>

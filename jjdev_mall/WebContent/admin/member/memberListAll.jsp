@@ -39,7 +39,7 @@
  	 	String sql="select * from member";
  	 	pstmt = conn.prepareStatement(sql);
  	 	 
- 	 	System.out.println(pstmt);
+ 	 	//System.out.println(pstmt);
  	 //04 
  	 	rs = pstmt.executeQuery();
  	 	while(rs.next()){%>
@@ -47,16 +47,19 @@
  	 		<td><%=rs.getInt("member_no")%></td>
  	 		<td><%=rs.getString("member_id")%></td>
  	 		<td><%=rs.getString("member_pw")%></td>
- 	 		<td><a href ="<%=request.getContextPath()%>/member/memberAddressForm.jsp?sendNo=<%=rs.getInt("member_no")%>"><%=rs.getString("member_name")%></a></td>
+ 	 		<td><a href ="<%=request.getContextPath()%>/admin/member/memberAddressList.jsp?sendNo=<%=rs.getInt("member_no")%>"><%=rs.getString("member_name")%></a></td>
  	 		<td><%=rs.getString("member_sex")%></td>
- 	 		<td><%=rs.getInt("member_age")%></td>	 	
+ 	 		<td><%=rs.getInt("member_age")%></td>
+ 	 		</tr>	 	
  	 	<% }
- 	 	
-
  	 	conn.commit();
  	 }catch(Exception e){
  		 conn.rollback();
  		 e.printStackTrace();
+ 	 }finally{
+ 		 conn.close();
+ 		 pstmt.close();
+ 		 rs.close();
  	 }
  	
  	

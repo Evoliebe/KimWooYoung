@@ -32,7 +32,7 @@
 <title>Insert title here</title>
 </head>
 <body>	
-<form id="addForm" action="./itemAddAction.jsp" method="post">
+<form id="addForm" action="<%=request.getContextPath() %>/admin/item/itemAddAction.jsp" method="post">
 <h1>Item Add</h1>
 <table>
 	<tr>
