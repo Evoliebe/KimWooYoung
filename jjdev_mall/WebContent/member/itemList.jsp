@@ -15,7 +15,7 @@
 <body>
 <table>
 <tr>
-	<td>item_No</td><td>이름</td><td>가격</td><td>할인율</td>
+	<td>item_No</td><td>이름</td><td>가격</td><td>할인율</td><td>주문</td>
 </tr>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -47,7 +47,8 @@
  	 		<td><%=rs.getInt("item_no")%></td>
  	 		<td><%=rs.getString("item_name")%></td>
  	 		<td><%=rs.getInt("item_price")%></td>
- 	 		<td><%=rs.getDouble("item_rate")%></td> 	
+ 	 		<td><%=rs.getDouble("item_rate")%></td> 
+ 	 		<td><a href="<%=request.getContextPath()%>/oders/ordersAddForm.jsp">주문</a></td>	
  	 	<% }
  	 	conn.commit();
  	 }catch(Exception e){

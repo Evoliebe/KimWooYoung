@@ -56,6 +56,8 @@
  		 pstmt.close();
  		 rs.close();
  	 }
+ 	response.sendRedirect(request.getContextPath() + "/admin/item/itemList.jsp");
+
 %>
 </body>
 </html>

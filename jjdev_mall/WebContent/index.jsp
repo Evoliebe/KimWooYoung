@@ -47,7 +47,9 @@
 <%		
 	} else { // 로그인이 된 상태
 %>
-		<%=sessionMemberId%>님 반갑습니다.<a href="<%=request.getContextPath()%>/member/memberOne.jsp?sendId=<%=sessionMemberId %>">[회원정보]</a>
+		<%=sessionMemberId%>님 반갑습니다.
+		<a href="<%=request.getContextPath()%>/member/memberOne.jsp?sendId=<%=sessionMemberId %>">[회원정보]</a>
+		<a href="<%=request.getContextPath()%>/member/itemList.jsp">[상품정보]</a>
 		<a href="<%=request.getContextPath()%>/member/logout.jsp">[로그아웃]</a>
 <%		
 	}

@@ -15,7 +15,7 @@
 <body>
 <table>
 <tr>
-	<td>item_No</td><td>이름</td><td>가격</td><td>할인율</td><td>수정</td><td>추가</td><td>삭제</td>
+	<td>No</td><td>이름</td><td>가격</td><td>할인율</td><td>수정</td><td>삭제</td>
 </tr>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -48,7 +48,6 @@
  	 		<td><%=rs.getString("item_name")%></td>
  	 		<td><%=rs.getInt("item_price")%></td>
  	 		<td><%=rs.getDouble("item_rate")%></td> 
- 	 		<td><a href="<%=request.getContextPath()%>/admin/item/itemAddForm.jsp">추가</a></td>
  	 		<td><a href="<%=request.getContextPath()%>/admin/item/itemUpdateForm.jsp?sendItemName=<%=rs.getString("item_name")%>">수정</a></td>
  	 		<td><a href="<%=request.getContextPath()%>/admin/item/itemDeleteAction.jsp">삭제</a></td>	
  	 	<% }
@@ -60,10 +59,12 @@
  		 conn.close();
  		 pstmt.close();
  		 rs.close();
- 	 }
- 	
- 	
+ 	 } 	
 %>
+<tr>
+<td colspan="3"><a href="<%=request.getContextPath()%>/admin/adminIndex.jsp">Home</a></td>
+<td colspan="3"><a href="<%=request.getContextPath()%>/admin/item/itemAddForm.jsp">추가</a></td>
+</tr>
 </table>
 </body>
 </html>
