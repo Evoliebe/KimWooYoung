@@ -49,7 +49,7 @@
  	 		<td><%=rs.getInt("item_price")%></td>
  	 		<td><%=rs.getDouble("item_rate")%></td> 
  	 		<td><a href="<%=request.getContextPath()%>/admin/item/itemUpdateForm.jsp?sendItemName=<%=rs.getString("item_name")%>">수정</a></td>
- 	 		<td><a href="<%=request.getContextPath()%>/admin/item/itemDeleteAction.jsp">삭제</a></td>	
+ 	 		<td><a href="<%=request.getContextPath()%>/admin/item/itemDeleteAction.jsp?sendItemName=<%=rs.getString("item_name")%>">삭제</a></td>	
  	 	<% }
  	 	conn.commit();
  	 }catch(Exception e){

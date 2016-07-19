@@ -48,7 +48,7 @@
  	 		<td><%=rs.getString("item_name")%></td>
  	 		<td><%=rs.getInt("item_price")%></td>
  	 		<td><%=rs.getDouble("item_rate")%></td> 
- 	 		<td><a href="<%=request.getContextPath()%>/oders/ordersAddForm.jsp">주문</a></td>	
+ 	 		<td><a href="<%=request.getContextPath()%>/oders/ordersAddForm.jsp?sendItemPrice=<%=rs.getInt("item_price")%>&sendItemRate=<%=rs.getDouble("item_rate")%>">주문</a></td>	
  	 	<% }
  	 	conn.commit();
  	 }catch(Exception e){
